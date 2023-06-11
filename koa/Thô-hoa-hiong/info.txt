@@ -1,0 +1,20 @@
+pojtitle
+Thô-hoa-hiong
+
+hantitle
+桃花鄉
+
+pojartist
+Kang Hūi
+
+hanartist
+江蕙
+
+pojkoa
+Thô-hoa-hiong.txt
+
+hankoa
+桃花鄉.txt
+
+video
+2tu17fGV_as
