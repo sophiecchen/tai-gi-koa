@@ -1,0 +1,25 @@
+<!--index page-->
+
+<!--a child of base.html-->
+{% extends "base.html" %}
+
+<!--The content that goes within title block-->
+{% block title %}{{title}}{% endblock %}
+
+<!--The content of the page-->
+{% block content %}
+<main class="index">
+  <!--html form that asks like a search bar-->
+  <div class="content">
+    <form method="post">
+      <!--default value in search bar is Tang Poetry-->
+      <input type="text" name="searchIn" value="Tâi-gí-koa" placeholder="Search" class="searchIn pojf"/>
+      <!--submit button-->
+      <button type="submit" name="submitIn" class="submitIn"><img src="{{url_for('static', filename='images/searchIcon.png')}}"></button>
+    </form>
+
+    <!--random song functionality-->
+    <a href="{{ url_for('randomSong') }}" title="Go to a random song page" class="pojf">Random Song</a>
+  </div>
+</main>
+{% endblock %}

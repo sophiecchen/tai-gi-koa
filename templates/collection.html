@@ -1,0 +1,84 @@
+<!--collection page-->
+
+<!--a child of base.html-->
+{% extends "base.html" %}
+
+<!--The content that goes within title block-->
+{% block title %}{{title}}{% endblock %}
+
+<!--The content of the page-->
+{% block content %}
+<main class="collection">
+  <!--search bar-->
+  <form method="post">
+    <input type="text" name="searchCol" value="{{query}}" placeholder="Search" class="searchCol pojf"/>
+    <!--submit button page-->
+    <button type="submit" name="submitCol" class="submitCol"><img src="{{url_for('static', filename='images/searchIcon.png')}}"></button>
+  </form>
+
+  <!--results-->
+  <div class="results">
+    <!--if no results-->
+    {% if numSongs == 0 %}
+      <p class=""pojf>No matching results for "{{query}}".</p>
+
+    <!--if only one page long-->
+    {% elif numPages == 1 %}
+      <div class="songs">
+      <!--automatically loops through keys (songs)
+        slightly less complex loop but the same as the multipage result-->
+      {% for song in matches %}
+        <!--result block-->
+        <!--alternative to url_for because it's giving me trouble-->
+        <a href="/collection/{{song}}" title="Go to {{song}} page">
+          <h1><span class="pojf">{{song}}</span> <span class="hanf">{{matches[song][1]}}</span></h1>
+          <h3><span class="pojf">{{matches[song][2]}}</span> <span class="hanf">{{matches[song][3]}}</span></h3>
+        </a>
+      {% endfor %}
+      </div>
+
+    <!--if multipage result-->
+    {% else %}
+      <div class="songs">
+      <!--if the last page-->
+      {% if page == numPages %}
+        {% for i in range((page-1)*20, numSongs) %}
+          <!--result block-->
+          <a href="/collection/{{matchKeys[i]}}" title="Go to {{matchKeys[i]}} page">
+            <h1><span class="pojf">{{matchKeys[i]}}</span> <span class="hanf">{{matches[matchKeys[i]][1]}}</span></h1>
+            <h3><span class="pojf">{{matches[matchKeys[i]][2]}}</span> <span class="hanf">{{matches[matchKeys[i]][3]}}</span></h3>
+          </a>
+        {% endfor %}
+
+      <!--if not a last page-->
+      {% else %}
+        {% for i in range((page-1)*20, page*20) %}
+          <!--result block-->
+          <a href="/collection/{{matchKeys[i]}}" title="Go to {{matchKeys[i]}} page">
+            <h1><span class="pojf">{{matchKeys[i]}}</span> <span class="hanf">{{matches[matchKeys[i]][1]}}</span></h1>
+            <h3><span class="pojf">{{matches[matchKeys[i]][2]}}</span> <span class="hanf">{{matches[matchKeys[i]][3]}}</span></h3>
+          </a>
+        {% endfor %}
+      {% endif %}
+      </div>
+
+      <!--paging-->
+      <div class="paging">
+      {% for pager in range(numPages) %}
+        {% if pager != page-1 %}
+          <a href="/collection/search={{query}}/page={{pager+1}}" title="Go to page {{pager+1}} of search results" class="pojf">
+            {{pager+1}}
+          </a>
+        <!--current page gets special styling-->
+        {% else %}
+          <a href="/collection/search={{query}}/page={{pager+1}}" title="Go to page {{pager+1}} of search results" class="current pojf">
+            {{pager+1}}
+          </a>
+        {% endif %}
+      {% endfor %}
+      </div>
+
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!--base: each page contains these fundamentals-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--a variable block that we can change in child templates-->
+    <title>{% block title %}{% endblock %}</title>
+    <!--<link href="#" type="image/png" rel="shortcut icon" />-->
+
+    <!--master style sheet-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <!--fonts-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <!--navigation-->
+    <nav>
+      <input type="checkbox" id="ham" />
+      <label class="open" for="ham">&#9776;</label>
+      <label class="close" for="ham">&#x2715;</label>
+
+      <!--menu-->
+      <div class="menu">
+        <div class="menuText">
+          <a href="{{ url_for('home') }}" title="Go to home page" class="pojf">Home</a>
+          <a
+            href="{{ url_for('collection') }}"
+            title="Go to collection page"
+            class="pojf"
+            >Collection</a
+          >
+          <a href="{{ url_for('about') }}" title="Go to about page" class="pojf">About</a>
+        </div>
+      </div>
+    </nav>
+    <!--this allows variations of Python Code to be written-->
+    {% block content %}{% endblock %}
+
+    <!--footer-->
+    <footer>
+      <p class="pojf">Tâi-gí-koa does not own any of the lyrics used in this website.</p>
+    </footer>
+  </body>
+</html>

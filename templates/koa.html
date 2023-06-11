@@ -1,0 +1,34 @@
+<!--song page-->
+
+<!--a child of base.html-->
+{% extends "base.html" %}
+
+<!--The content that goes within title block-->
+{% block title %}{{pojTitle}} {{hanTitle}} | Tâi-gí-koa{% endblock %}
+
+<!--The content of the page-->
+{% block content %}
+<main class="koa">
+  <header>
+    <h1><span class="pojf">{{pojTitle}}</span> <span class="hanf">{{hanTitle}}</span></h1>
+    <h3><span class="pojf">{{pojArtist}}</span> <span class="hanf">{{hanArtist}}</span></h3>
+  </header>
+
+  <!--checkboxes toggle the different writing systems, with the poj/hanji being default on-->
+  <div class="versions">
+    <input type="checkbox" id="poj" checked />
+    <label class="pojlabel" for="poj">Pe̍h-ōe-jī</label>
+    <input type="checkbox" id="hanji" checked />
+    <label class="hanlabel" for="hanji">漢字</label>
+
+    <!--disable flask autoescape so that breaks can be seen!-->
+    <p class="pojkoa pojf">{% autoescape false %} {{pojKoa}} {% endautoescape %}</p>
+    <p class="hankoa hanf">{% autoescape false %} {{hanKoa}} {% endautoescape %}</p>
+  </div>
+
+  <!--link back to collection page-->
+  <a href="https://www.youtube.com/watch?v={{video}}" title="Go to music on YouTube" target="_blank" class="pojf">See music on YouTube</a> 
+  <a href="{{ url_for('collection') }}" title="Go to collection page" class="pojf"
+      >Search for more songs</a>
+</main>
+{% endblock %}
