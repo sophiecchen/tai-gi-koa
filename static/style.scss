@@ -1,0 +1,27 @@
+/*******
+IMPORTS
+********/
+@import "_config.scss";
+
+/*******
+BREAKPOINTS
+********/
+@media (max-width: 599px) {
+    @import "_phone-only.scss";
+}
+
+@media (min-width: 600px) {
+    @import "_tablet-portrait-up.scss";
+}
+
+@media (min-width: 900px) {
+    @import "_tablet-landscape-up.scss";
+}
+
+@media (min-width: 1200px) {
+    @import "_desktop-up.scss";
+}
+
+@media (min-width: 1800px) {
+    @import "_big-desktop-up.scss";
+}

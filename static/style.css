@@ -1,0 +1,754 @@
+/*******
+IMPORTS
+********/
+/********
+STYLES
+*********/
+/********
+GENERAL
+*********/
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #fbfaf5;
+  height: 100%;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*to keep footer at bottom*/
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100%;
+}
+
+.pojf {
+  font-family: "Noto Serif", serif;
+}
+
+.hanf {
+  font-family: "Noto Serif TC", serif;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  height: 0;
+  /*strip does not interfere with other elements*/
+  z-index: 2;
+  /*the ~ is for affecting siblings!*/
+}
+
+nav #ham {
+  opacity: 0;
+  height: 0;
+}
+
+nav label {
+  float: right;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  position: relative;
+  z-index: 2;
+}
+
+nav .open {
+  color: #242222;
+}
+
+nav .close {
+  display: none;
+  color: #fbfaf5;
+}
+
+nav .open:hover, nav .open:focus {
+  color: #A06222;
+}
+
+nav .close:hover, nav .close:focus {
+  color: #daae6d;
+}
+
+nav #ham:focus ~ .open {
+  color: #A06222;
+}
+
+nav #ham:focus ~ .close {
+  color: #daae6d;
+}
+
+nav .menu {
+  height: 0;
+  overflow: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #A06222;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*vertically align item*/
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 1;
+}
+
+nav .menu a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #fbfaf5;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+nav .menu a:hover, nav .menu a:focus {
+  color: #daae6d;
+}
+
+nav #ham:checked ~ .close {
+  display: block;
+}
+
+nav #ham:checked ~ .menu {
+  height: 100%;
+}
+
+nav #ham:checked ~ .open {
+  display: none;
+}
+
+main {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  /*grows to fill rest of space*/
+}
+
+/********
+PAGES
+*********/
+.index {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*vertically align item*/
+}
+
+.index form {
+  position: relative;
+}
+
+.index .searchIn {
+  background-color: transparent;
+  border: none;
+  color: #242222;
+  border-bottom-style: solid;
+  border-bottom-color: #A06222;
+  -webkit-transition: border-bottom-color 0.3s;
+  transition: border-bottom-color 0.3s;
+}
+
+.index .searchIn:hover, .index #searchIn:focus {
+  border-bottom-color: #daae6d;
+}
+
+.index button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  left: 0;
+}
+
+.index a {
+  color: #A06222;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  display: block;
+}
+
+.index a:hover, .index a:focus {
+  color: #daae6d;
+}
+
+.collection form {
+  position: relative;
+}
+
+.collection .searchCol {
+  background-color: transparent;
+  border: none;
+  color: #242222;
+  border-bottom-style: solid;
+  border-bottom-color: #A06222;
+  -webkit-transition: border-bottom-color 0.3s;
+  transition: border-bottom-color 0.3s;
+}
+
+.collection .searchCol:hover, .collection .searchCol:focus {
+  border-bottom-color: #daae6d;
+}
+
+.collection button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  left: 0;
+}
+
+.collection .results .songs a {
+  display: block;
+  border-bottom-style: solid;
+  border-bottom-color: #daae6d;
+  color: #242222;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.collection .results .songs a h3 {
+  font-weight: normal;
+}
+
+.collection .results .songs a:hover {
+  color: #A06222;
+}
+
+.collection .paging {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.collection .paging p {
+  color: #242222;
+}
+
+.collection .paging a {
+  display: block;
+  text-decoration: none;
+  color: #242222;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.collection .paging .current {
+  background-color: #A06222;
+  color: #fbfaf5;
+}
+
+.collection .paging a:hover {
+  color: #A06222;
+}
+
+.koa .versions input {
+  display: none;
+}
+
+.koa .versions label {
+  color: #242222;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.koa .versions label:hover, .koa .versions label:focus {
+  /*overrides :checked color*/
+  color: #daae6d !important;
+}
+
+.koa .versions p {
+  display: none;
+  color: #242222;
+}
+
+.koa .versions #poj:checked ~ .pojlabel, .koa .versions #hanji:checked ~ .hanlabel {
+  color: #A06222;
+}
+
+.koa .versions #poj:checked ~ .pojkoa,
+.koa .versions #hanji:checked ~ .hankoa {
+  display: block;
+}
+
+.koa a {
+  color: #A06222;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.koa a:hover, .koa a:focus {
+  color: #daae6d;
+}
+
+.about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*vertically align item*/
+}
+
+.about p {
+  color: #242222;
+}
+
+footer {
+  width: 100%;
+  background-color: #A06222;
+}
+
+footer p {
+  width: 100%;
+  text-align: center;
+  color: #fbfaf5;
+  font-size: 1rem;
+  /*16px*/
+  padding: 15px;
+}
+
+/*******
+BREAKPOINTS
+********/
+@media (max-width: 599px) {
+  /********
+PHONE ONLY
+*********/
+  nav label {
+    font-size: 1.75rem;
+    /*same as h3*/
+    margin: 15px;
+  }
+  nav .menu a {
+    font-size: 2.75rem;
+    margin: 30px 0px;
+  }
+  main {
+    margin: calc(30px + 1.75rem) 15px 30px 15px;
+  }
+  .index .searchIn {
+    border-bottom-width: 3px;
+    font-size: 3rem;
+    width: calc(100vw - 30px);
+    padding: 5px 0px 5px 2.5rem;
+  }
+  .index button {
+    top: 25px;
+  }
+  .index img {
+    height: 2rem;
+  }
+  .index a {
+    margin-left: 2.5rem;
+    margin-top: 15px;
+    font-size: 1.25rem;
+  }
+  .collection .searchCol {
+    border-bottom-width: 2px;
+    font-size: 1.25rem;
+    width: calc(100vw - 30px);
+    padding: 5px 0px 5px 1.5rem;
+  }
+  .collection button {
+    top: 9px;
+  }
+  .collection img {
+    height: 1.125rem;
+  }
+  .collection .results {
+    margin-top: 30px;
+  }
+  .collection .results p {
+    font-size: 1.125rem;
+  }
+  .collection .results .songs a {
+    border-bottom-width: 1px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  .collection .results .songs a h1 {
+    font-size: 1.375rem;
+  }
+  .collection .results .songs a h3 {
+    font-size: 1.125rem;
+    padding: 5px 0px;
+  }
+  .collection .results .paging {
+    margin-top: 30px;
+  }
+  .collection .results .paging a {
+    padding: 5px 10px;
+    font-size: 1.125rem;
+  }
+  .koa header {
+    margin-bottom: 30px;
+  }
+  .koa header h1 {
+    font-size: 2.25rem;
+    margin-bottom: 15px;
+  }
+  .koa header h3 {
+    font-size: 1.25rem;
+  }
+  .koa .versions {
+    margin-bottom: 30px;
+  }
+  .koa .versions .pojlabel {
+    font-size: 1.25rem;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .koa .versions .hanlabel {
+    font-size: 1.25rem;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  .koa .versions .pojkoa {
+    font-size: 1.125rem;
+    padding-top: 30px;
+  }
+  .koa .versions .hankoa {
+    font-size: 1.125rem;
+    padding-top: 30px;
+  }
+  .koa a {
+    font-size: 1.125rem;
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+  }
+  .about p {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 600px) {
+  /********
+TABLET PORTRAIT UP
+*********/
+  nav label {
+    font-size: 2rem;
+    margin: 15px 30px;
+  }
+  nav .menu a {
+    font-size: 3rem;
+    margin: 30px 0px;
+  }
+  main {
+    margin: calc(30px + 2rem) 30px 30px 30px;
+  }
+  .index .searchIn {
+    border-bottom-width: 3px;
+    font-size: 4rem;
+    width: calc(100vw - 60px);
+    padding: 5px 0px 5px 3.625rem;
+  }
+  .index button {
+    top: 25px;
+  }
+  .index img {
+    height: 3rem;
+  }
+  .index a {
+    margin-left: 3.625rem;
+    margin-top: 15px;
+    font-size: 1.5rem;
+  }
+  .collection .searchCol {
+    border-bottom-width: 2px;
+    font-size: 1.5rem;
+    width: calc(100vw - 60px);
+    padding: 5px 0px 5px 2rem;
+  }
+  .collection button {
+    top: 12px;
+  }
+  .collection img {
+    height: 1.25rem;
+  }
+  .collection .results {
+    margin-top: 45px;
+  }
+  .collection .results p {
+    font-size: 1.25rem;
+  }
+  .collection .results .songs a {
+    border-bottom-width: 1px;
+    width: 100%;
+    margin-top: 15px;
+  }
+  .collection .results .songs a h1 {
+    font-size: 1.5rem;
+  }
+  .collection .results .songs a h3 {
+    font-size: 1.25rem;
+    padding: 5px 0px;
+  }
+  .collection .results .paging {
+    margin-top: 45px;
+  }
+  .collection .results .paging a {
+    padding: 5px 10px;
+    font-size: 1.25rem;
+  }
+  .koa header {
+    margin-bottom: 30px;
+  }
+  .koa header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+  .koa header h3 {
+    font-size: 1.5rem;
+  }
+  .koa .versions {
+    margin-bottom: 30px;
+  }
+  .koa .versions label {
+    font-size: 1.5rem;
+    display: inline-block;
+  }
+  .koa .versions .pojlabel {
+    margin-right: 10px;
+  }
+  .koa .versions .hanlabel {
+    margin-left: 10px;
+  }
+  .koa .versions p {
+    font-size: 1.25rem;
+    padding-top: 30px;
+  }
+  .koa a {
+    font-size: 1.25rem;
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+  }
+  .about p {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 900px) {
+  /********
+TABLET LANDSCAPE UP
+*********/
+  nav label {
+    font-size: 2.25rem;
+    margin: 15px 45px;
+  }
+  nav .menu a {
+    font-size: 3.25rem;
+  }
+  main {
+    margin: calc(30px + 2.25rem) 45px 30px 45px;
+  }
+  .index .searchIn {
+    font-size: 4.25rem;
+    width: calc(100vw - 90px);
+    padding: 5px 0px 5px 3.75rem;
+  }
+  .index button {
+    top: 28px;
+  }
+  .index img {
+    height: 3.125rem;
+  }
+  .index a {
+    margin-left: 3.75rem;
+    font-size: 1.75rem;
+  }
+  .collection .searchCol {
+    font-size: 1.75rem;
+    width: calc(100vw - 90px);
+    padding: 5px 0px 5px 2.25rem;
+  }
+  .collection button {
+    top: 12px;
+  }
+  .collection img {
+    height: 1.5rem;
+  }
+  .collection .results p {
+    font-size: 1.5rem;
+  }
+  .collection .results .songs a h1 {
+    font-size: 1.75rem;
+  }
+  .collection .results .songs a h3 {
+    font-size: 1.5rem;
+  }
+  .collection .results .paging a {
+    font-size: 1.5rem;
+  }
+  .koa header h1 {
+    font-size: 2.75rem;
+  }
+  .koa header h3 {
+    font-size: 1.75rem;
+  }
+  .koa .versions label {
+    font-size: 1.75rem;
+  }
+  .koa .versions p {
+    font-size: 1.5rem;
+  }
+  .koa a {
+    font-size: 1.5rem;
+  }
+  .about p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  /********
+DESKTOP UP
+*********/
+  nav label {
+    font-size: 2.5rem;
+    margin: 30px 60px;
+  }
+  nav .menu a {
+    font-size: 3.5rem;
+  }
+  main {
+    margin: calc(60px + 2.5rem) 60px 30px 60px;
+  }
+  .index .searchIn {
+    font-size: 4.5rem;
+    width: calc(80vw - 120px);
+    padding: 5px 0px 5px 4rem;
+  }
+  .index button {
+    top: 29px;
+  }
+  .index img {
+    height: 3.25rem;
+  }
+  .index a {
+    margin-left: 4rem;
+    font-size: 2rem;
+  }
+  .collection form {
+    margin: 0px 10vw;
+  }
+  .collection .searchCol {
+    font-size: 2rem;
+    width: calc(80vw - 120px);
+    padding: 5px 0px 5px 2.375rem;
+  }
+  .collection button {
+    top: 13px;
+  }
+  .collection img {
+    height: 1.625rem;
+  }
+  .collection .results p {
+    font-size: 1.75rem;
+  }
+  .collection .results .songs a h1 {
+    font-size: 2rem;
+  }
+  .collection .results .songs a h3 {
+    font-size: 1.75rem;
+  }
+  .collection .results .paging a {
+    font-size: 1.5rem;
+  }
+  .koa header h1 {
+    font-size: 3rem;
+  }
+  .koa header h3 {
+    font-size: 2rem;
+  }
+  .koa .versions {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 40% 40%;
+        grid-template-columns: 40% 40%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .koa .versions label {
+    font-size: 2rem;
+  }
+  .koa .versions .pojlabel {
+    margin-right: 0;
+  }
+  .koa .versions .hanlabel {
+    margin-left: 0;
+  }
+  .koa .versions .pojkoa {
+    font-size: 1.5rem;
+  }
+  .koa .versions .hankoa {
+    font-size: 1.5rem;
+    -ms-grid-column: 2;
+        grid-column-start: 2;
+  }
+  .koa a {
+    font-size: 1.625rem;
+    text-align: left;
+  }
+  .about p {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  /********
+BIG DESKTOP UP
+*********/
+  nav label {
+    margin: 30px 90px;
+  }
+  main {
+    margin: calc(60px + 2.5rem) 90px 30px 90px;
+  }
+  .index .searchIn {
+    font-size: 5rem;
+    width: calc(70vw - 180px);
+  }
+  .index button {
+    top: 37px;
+  }
+  .collection form {
+    margin: 0px 16vw;
+  }
+  .collection .searchCol {
+    width: calc(70vw - 180px);
+  }
+}
+/*# sourceMappingURL=style.css.map */

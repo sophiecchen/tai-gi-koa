@@ -1,0 +1,33 @@
+/********
+BIG DESKTOP UP
+*********/
+nav {
+  label {
+    margin: 30px 90px;
+  }
+}
+
+main {
+  margin: calc(60px + 2.5rem) 90px 30px 90px;
+}
+
+.index {
+  .searchIn {
+    font-size: 5rem;
+    width: calc(70vw - 180px);
+  }
+  
+  button {
+    top: 37px;
+  }
+}
+
+.collection {
+  form {
+      margin: 0px 16vw;
+  }
+
+  .searchCol {
+    width: calc(70vw - 180px);
+  }
+}

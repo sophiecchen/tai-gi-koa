@@ -1,0 +1,306 @@
+/********
+STYLES
+*********/
+$light: #daae6d;
+$dark: #A06222;
+$white: #fbfaf5;
+$black: #242222;
+
+/********
+GENERAL
+*********/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: $white;
+  height: 100%;
+}
+
+body {
+  display: flex; /*to keep footer at bottom*/
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.pojf {
+  font-family: "Noto Serif", serif;
+}
+
+.hanf {
+  font-family: "Noto Serif TC", serif;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  height: 0; /*strip does not interfere with other elements*/
+  z-index: 2;
+
+  #ham {
+    opacity: 0;
+    height: 0;
+  }
+
+  label {
+    float: right;
+    cursor: pointer;
+    transition: color 0.3s;
+    position: relative;
+    z-index: 2;
+  }
+
+  .open {
+    color: $black;
+  }
+  
+  .close {
+    display: none;
+    color: $white;
+  }
+
+  .open:hover, .open:focus {
+    color: $dark;
+  }
+
+  .close:hover, .close:focus {
+    color: $light;
+  }
+
+  #ham:focus ~ .open{
+    color: $dark;
+  }
+
+  #ham:focus ~ .close{
+    color: $light;
+  }
+
+  .menu {
+    height: 0;
+    overflow: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: $dark;
+    transition: height 0.5s;
+    display: flex;
+    align-items: center; /*vertically align item*/
+    justify-content: center;
+    z-index: 1;
+
+    a {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: $white;
+      transition: color 0.3s;
+    }
+
+    a:hover, a:focus {
+      color: $light;
+    }
+  }
+
+  /*the ~ is for affecting siblings!*/
+  #ham:checked ~ .close {
+    display: block;
+  }
+
+  #ham:checked ~ .menu {
+    height: 100%;
+  }
+
+  #ham:checked ~ .open {
+    display: none;
+  }
+}
+
+main {
+  flex-grow: 1; /*grows to fill rest of space*/
+}
+
+/********
+PAGES
+*********/
+.index {
+  display: flex;
+  align-items: center; /*vertically align item*/
+
+  form {
+    position: relative;
+  }
+
+  .searchIn {
+    background-color: transparent;
+    border: none;
+    color: $black;
+    border-bottom-style: solid;
+    border-bottom-color: $dark;
+    transition: border-bottom-color 0.3s;
+  }
+
+  .searchIn:hover, #searchIn:focus {
+    border-bottom-color: $light;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    left: 0;
+  }
+
+  a {
+    color: $dark;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: block;
+  }
+
+  a:hover, a:focus {
+    color: $light;
+  }
+}
+
+.collection {
+  form {
+    position: relative;
+  }
+
+  .searchCol {
+    background-color: transparent;
+    border: none;
+    color: $black;
+    border-bottom-style: solid;
+    border-bottom-color: $dark;
+    transition: border-bottom-color 0.3s;
+  }
+
+  .searchCol:hover, .searchCol:focus {
+    border-bottom-color: $light;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    left: 0;
+  }
+
+  .results {
+    .songs {
+      a {
+        display: block;
+        border-bottom-style: solid;
+        border-bottom-color: $light;
+        color: $black;
+        text-decoration: none;
+        transition: color 0.3s;
+    
+        h3 {
+          font-weight: normal;
+        }
+      }
+    
+      a:hover {
+        color: $dark;
+      }
+    }
+  }
+
+  .paging {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    p {
+      color: $black;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: $black;
+      transition: color 0.3s;
+    }
+
+    .current {
+      background-color: $dark;
+      color: $white;
+    }
+
+    a:hover {
+      color: $dark;
+    }
+  }
+}
+
+.koa {
+  .versions {
+    input {
+      display: none;
+    }
+
+    label {
+      color: $black;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    label:hover, label:focus{
+      /*overrides :checked color*/
+      color: $light !important;
+    }
+  
+    p {
+      display: none;
+      color: $black;
+    }
+
+    #poj:checked ~ .pojlabel, #hanji:checked ~ .hanlabel {
+      color: $dark;
+    }
+  
+    #poj:checked ~ .pojkoa,
+    #hanji:checked ~ .hankoa {
+      display: block;
+    }
+  }
+
+  a {
+    color: $dark;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  a:hover, a:focus {
+    color: $light;
+  }
+}
+
+.about {
+  display: flex;
+  align-items: center; /*vertically align item*/
+
+  p {
+    color: $black;
+  }
+}
+
+footer {
+  width: 100%;
+  background-color: $dark;
+
+  p {
+    width: 100%;
+    text-align: center;
+    color: $white;
+    font-size: 1rem; /*16px*/
+    padding: 15px;
+  }
+}
