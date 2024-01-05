@@ -144,26 +144,24 @@ def koa(koaName):
     koaInfoPath = "./koa/" + koaName + "/info.txt"
 
     #if os.path.isfile(koaInfoPath):
-    try:
-        #open title file here! find title and artists
-        pTitle = findInfo(koaInfoPath, "pojtitle").strip('\n')
-        hTitle = findInfo(koaInfoPath, "hantitle").strip('\n')
-        pArtist = findInfo(koaInfoPath, "pojartist").strip('\n')
-        hArtist = findInfo(koaInfoPath, "hanartist").strip('\n')
-        video = findInfo(koaInfoPath, "video").strip('\n')
+    #open title file here! find title and artists
+    pTitle = findInfo(koaInfoPath, "pojtitle").strip('\n')
+    hTitle = findInfo(koaInfoPath, "hantitle").strip('\n')
+    pArtist = findInfo(koaInfoPath, "pojartist").strip('\n')
+    hArtist = findInfo(koaInfoPath, "hanartist").strip('\n')
+    video = findInfo(koaInfoPath, "video").strip('\n')
 
-        #open the lyrics here
-        pKoaPath = "./koa/" + koaName + "/" + findInfo(koaInfoPath, "pojkoa").strip('\n')
-        pKoa = openSong(pKoaPath)
+    #open the lyrics here
+    pKoaPath = "./koa/" + koaName + "/" + findInfo(koaInfoPath, "pojkoa").strip('\n')
+    pKoa = openSong(pKoaPath)
 
-        hKoaPath = "./koa/" + koaName + "/" + findInfo(koaInfoPath, "hankoa").strip('\n')
-        hKoa = openSong(hKoaPath)
+    hKoaPath = "./koa/" + koaName + "/" + findInfo(koaInfoPath, "hankoa").strip('\n')
+    hKoa = openSong(hKoaPath)
 
-        return render_template("koa.html", pojTitle=pTitle, hanTitle = hTitle, pojArtist = pArtist, hanArtist = hArtist, pojKoa=pKoa, hanKoa=hKoa, video=video)
+    return render_template("koa.html", pojTitle=pTitle, hanTitle = hTitle, pojArtist = pArtist, hanArtist = hArtist, pojKoa=pKoa, hanKoa=hKoa, video=video)
     #else:
-    except: 
         #if does not exist
-        return redirect("/notfound/")
+        #return redirect("/notfound/")
 
 
 
