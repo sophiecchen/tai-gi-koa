@@ -106,7 +106,7 @@ def collection(query="", page=1):
     #make dictionary of song matches with all info
     for song in songMatches:
         koaInfoPath = "./koa/" + song + "/info.txt"
-        songMatches[song] = [songMatches[song], findInfo(koaInfoPath, "hantitle").strip('\n'), findInfo(koaInfoPath, "pojartist").strip('\n'), findInfo(koaInfoPath, "hanartist").strip('\n')]
+        songMatches[song] = [findInfo(koaInfoPath, "pojtitle").strip('\n'), findInfo(koaInfoPath, "hantitle").strip('\n'), findInfo(koaInfoPath, "pojartist").strip('\n'), findInfo(koaInfoPath, "hanartist").strip('\n')]
 
     #songMatches.items(): list of tuples of key-value pairs
     #key=lambda x:x[1]: compare the values not the keys!
