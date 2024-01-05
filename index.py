@@ -45,12 +45,12 @@ def randomSong():
 #find all songs that match a keyword
 def searchKey(keyword):
     #all of the songs in a list
-    songDirs = os.listdir(".\\koa\\")
+    songDirs = os.listdir("./koa/")
     songMatches = []
 
     #search for the keyword in each song
     for song in songDirs:
-        keyPath = ".\\koa\\" + song + "\\keys.txt"
+        keyPath = "./koa/" + song + "/keys.txt"
         if os.path.isfile(keyPath):
             with open(keyPath, 'r', encoding="utf8") as keyFile:
                 #checks for everything in lowercase
@@ -105,7 +105,7 @@ def collection(query="", page=1):
     
     #make dictionary of song matches with all info
     for song in songMatches:
-        koaInfoPath = ".\\koa\\" + song + "\\info.txt"
+        koaInfoPath = "./koa/" + song + "/info.txt"
         songMatches[song] = [songMatches[song], findInfo(koaInfoPath, "hantitle").strip('\n'), findInfo(koaInfoPath, "pojartist").strip('\n'), findInfo(koaInfoPath, "hanartist").strip('\n')]
 
     #songMatches.items(): list of tuples of key-value pairs
