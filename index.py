@@ -142,9 +142,9 @@ def koa(koaName):
     #searches for the song
     #use / instead of \\ for vercel
     koaInfoPath = "./koa/" + koaName + "/info.txt"
-    console.log(koaName)
 
-    if os.path.isfile(koaInfoPath):
+    #if os.path.isfile(koaInfoPath):
+    try:
         #open title file here! find title and artists
         pTitle = findInfo(koaInfoPath, "pojtitle").strip('\n')
         hTitle = findInfo(koaInfoPath, "hantitle").strip('\n')
@@ -160,7 +160,8 @@ def koa(koaName):
         hKoa = openSong(hKoaPath)
 
         return render_template("koa.html", pojTitle=pTitle, hanTitle = hTitle, pojArtist = pArtist, hanArtist = hArtist, pojKoa=pKoa, hanKoa=hKoa, video=video)
-    else:
+    #else:
+    except: 
         #if does not exist
         return redirect("/notfound/")
 
