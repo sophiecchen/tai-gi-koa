@@ -141,7 +141,7 @@ def openSong(koaPath):
 def koa(koaName):
     #searches for the song
     #use / instead of \\ for vercel
-    koaInfoPath = "./koa/" + koaName + "/info.txt"
+    koaInfoPath = os.path.join("./koa", koaName, "info.txt"))
 
     #if os.path.isfile(koaInfoPath):
     #open title file here! find title and artists
