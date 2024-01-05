@@ -36,7 +36,7 @@ def home():
 #random function
 @app.route("/randomSong/")
 def randomSong():
-    songDirs = os.listdir(".\koa\\")
+    songDirs = os.listdir(".\\koa\\")
     randIndex = random.randrange(0, len(songDirs))
     return redirect("/collection/" + songDirs[randIndex]) 
 
