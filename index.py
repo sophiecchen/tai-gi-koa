@@ -142,6 +142,7 @@ def koa(koaName):
     #searches for the song
     #use / instead of \\ for vercel
     koaInfoPath = "./koa/" + koaName + "/info.txt"
+    console.log(koaName)
 
     if os.path.isfile(koaInfoPath):
         #open title file here! find title and artists
