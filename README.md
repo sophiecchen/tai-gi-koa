@@ -1,5 +1,7 @@
 # Tâi-gí-koa
-Run py "index.py" in terminal and view the website locally on http://127.0.0.1:5000
+https://tai-gi-koa.vercel.app/
+
+To run locally, type py "index.py" in terminal and view the website locally on http://127.0.0.1:5000.
 
 Commands for song maintenance:
 * addsong: addsong.py adds a new song directory and creates the info.txt file
