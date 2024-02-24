@@ -1,4 +1,7 @@
 # Tâi-gí-koa
+
+By Sophie Chen
+
 This repository contains the code for Tâi-gí-koa, a website that displays Taiwanese song lyrics in two writing systems (Pe̍h-ōe-jī and 漢字). View the website [here](https://tai-gi-koa.vercel.app/).
 
 To run locally, type py "index.py" in terminal and view the website locally on http://127.0.0.1:5000.
